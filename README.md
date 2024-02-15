@@ -44,6 +44,13 @@
     
   - Executando Código Nativo no Android e IOS
   
-  - ...
+  - Publicando a Aplicação nas Lojas de App
+  
+  - Projeto Campo Minado
+  
+  - Projeto Calculadora
+  
+  - Mobx: Desenvolvendo uma Aplicação Complita
+      
 </p>
 
