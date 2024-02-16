@@ -51,6 +51,8 @@
   - Projeto Calculadora
   
   - Mobx: Desenvolvendo uma Aplicação Complita
+
+    Link do Curso - https://www.udemy.com/course/curso-flutter/
       
 </p>
 
