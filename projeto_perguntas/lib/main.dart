@@ -9,8 +9,13 @@ class MyApp extends  StatelessWidget {
   Widget  build (BuildContext context) {
     return MaterialApp(
       key: UniqueKey(),
-      home: const Center(
-        child: Text('Olá Flutter!!!'),
+      home: Scaffold(
+        appBar: AppBar(
+            title: const Center(
+            child: Text('PERGUNTAS')
+          ),
+        ),
+        body: const Text('Olá Flutter!!!'),
       ),
     );
   }
