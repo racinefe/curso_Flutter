@@ -7,8 +7,12 @@ main() => runApp( MyApp());
 
 // ignore: use_key_in_widget_constructors
 class MyApp extends  StatelessWidget {
+
+  var perguntaSelecionada = 0;
+
   void responder() {
-    print('Pergunta respondida');
+    perguntaSelecionada++;
+    print(perguntaSelecionada);
   }
   @override
   Widget  build (BuildContext context) {
@@ -27,7 +31,7 @@ class MyApp extends  StatelessWidget {
         ),
         body:  Column(
           children: <Widget> [
-             Text(perguntas[0]),
+             Text(perguntas[perguntaSelecionada]),
              ElevatedButton(
               onPressed: responder, 
               child:  Text('(A) Ambas possuem núcleo.')
