@@ -1,19 +1,24 @@
 
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import './questao.dart';
 
 main() => runApp( MyApp());
 
-// ignore: use_key_in_widget_constructors
-class MyApp extends  StatelessWidget {
 
-  var perguntaSelecionada = 0;
+class _PerguntaAppState extends State<MyApp>{
 
-  void responder() {
-    perguntaSelecionada++;
-    print(perguntaSelecionada);
+  var _perguntaSelecionada = 0;
+
+  void _responder() {
+    setState(() {
+      _perguntaSelecionada++;
+    });
+    
+    print(_perguntaSelecionada);
   }
+
   @override
   Widget  build (BuildContext context) {
     final perguntas = [
@@ -31,26 +36,34 @@ class MyApp extends  StatelessWidget {
         ),
         body:  Column(
           children: <Widget> [
-             Text(perguntas[perguntaSelecionada]),
-             ElevatedButton(
-              onPressed: responder, 
+             Questao(perguntas[_perguntaSelecionada]),
+              ElevatedButton(
+              onPressed: _responder, 
               child:  Text('(A) Ambas possuem núcleo.')
              ),
              ElevatedButton(
-              onPressed: responder, 
+              onPressed: _responder, 
               child:  Text('(B) Células procarióticas possuem núcleo, e células eucarióticas não possuem.')
              ),
              ElevatedButton(
-              onPressed: responder, 
+              onPressed: _responder, 
               child:  Text('(C)  Células eucarióticas possuem núcleo, e células procarióticas não possuem.')
              ),
              ElevatedButton(
-              onPressed: responder, 
+              onPressed: _responder, 
               child:  Text('(D) Nenhuma das opções anteriores.')
              ),
           ],
         ),
       ),
     );
+  }
+
+}
+class MyApp extends  StatefulWidget {
+  const MyApp({super.key});
+  @override
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 }
