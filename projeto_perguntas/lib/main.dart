@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import './questao.dart';
+import './resposta.dart';
 
 main() => runApp(MyApp());
 
@@ -32,20 +33,10 @@ class _PerguntaAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Questao(perguntas[_perguntaSelecionada]),
-            ElevatedButton(
-                onPressed: _responder,
-                child: Text('(A) Ambas possuem núcleo.')),
-            ElevatedButton(
-                onPressed: _responder,
-                child: Text(
-                    '(B) Células procarióticas possuem núcleo, e células eucarióticas não possuem.')),
-            ElevatedButton(
-                onPressed: _responder,
-                child: Text(
-                    '(C)  Células eucarióticas possuem núcleo, e células procarióticas não possuem.')),
-            ElevatedButton(
-                onPressed: _responder,
-                child: Text('(D) Nenhuma das opções anteriores.')),
+            Resposta('Resposta A'),
+            Resposta('Resposta B'),
+            Resposta('Resposta C'),
+            Resposta('Resposta D'),
           ],
         ),
       ),
