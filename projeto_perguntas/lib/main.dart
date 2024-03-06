@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import './questao.dart';
 import './resposta.dart';
@@ -13,17 +12,44 @@ class _PerguntaAppState extends State<MyApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-
-    print(_perguntaSelecionada);
   }
 
   @override
   Widget build(BuildContext context) {
-    final perguntas = [
-      'Qual é a principal diferença entre células procarióticas e eucarióticas?',
-      'Qual é o órgão responsável pela troca gasosa nos seres humanos?',
-      'O que representa a combinação de alelos de um organismo?',
+    final List<Map<String, Object>> perguntas = [
+      {
+        'texto': 'Qual é um animal?',
+        'alternativas': [
+          'Casa',
+          'Carro',
+          'Cachorro',
+          'Colher'
+        ],
+      },
+      {
+        'texto': 'Qual é uma cor?',
+        'alternativas': [
+          'Azul',
+          'Faca',
+          'Relógio',
+          'Quadro'
+        ],
+      },
+      {
+        'texto': 'Qual é uma Fruta?',
+        'alternativas': [
+          'Chave',
+          'Radio',
+          'Celular',
+          'Pera'
+        ],
+      },
     ];
+
+    List< Widget> alternativas = [];
+    for (var textoAlternativas in perguntas[_perguntaSelecionada].cast()['alternativas']) {
+      alternativas.add(Resposta (textoAlternativas, _responder));
+    }
     return MaterialApp(
       key: UniqueKey(),
       home: Scaffold(
@@ -32,11 +58,8 @@ class _PerguntaAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            Questao(perguntas[_perguntaSelecionada]),
-            Resposta('Resposta A'),
-            Resposta('Resposta B'),
-            Resposta('Resposta C'),
-            Resposta('Resposta D'),
+            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
+            ...alternativas,
           ],
         ),
       ),
