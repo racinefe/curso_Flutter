@@ -19,37 +19,21 @@ class _PerguntaAppState extends State<MyApp> {
     final List<Map<String, Object>> perguntas = [
       {
         'texto': 'Qual é um animal?',
-        'alternativas': [
-          'Casa',
-          'Carro',
-          'Cachorro',
-          'Colher'
-        ],
+        'alternativas': ['Casa', 'Carro', 'Cachorro', 'Colher'],
       },
       {
         'texto': 'Qual é uma cor?',
-        'alternativas': [
-          'Azul',
-          'Faca',
-          'Relógio',
-          'Quadro'
-        ],
+        'alternativas': ['Azul', 'Faca', 'Relógio', 'Quadro'],
       },
       {
         'texto': 'Qual é uma Fruta?',
-        'alternativas': [
-          'Chave',
-          'Radio',
-          'Celular',
-          'Pera'
-        ],
+        'alternativas': ['Chave', 'Radio', 'Celular', 'Pera'],
       },
     ];
 
-    List< Widget> alternativas = [];
-    for (var textoAlternativas in perguntas[_perguntaSelecionada].cast()['alternativas']) {
-      alternativas.add(Resposta (textoAlternativas, _responder));
-    }
+    List<String> respostas =
+        perguntas[_perguntaSelecionada].cast()['alternativas'];
+
     return MaterialApp(
       key: UniqueKey(),
       home: Scaffold(
@@ -59,7 +43,7 @@ class _PerguntaAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            ...alternativas,
+            ...respostas.map((text) => Resposta(text, _responder)).toList(),
           ],
         ),
       ),
