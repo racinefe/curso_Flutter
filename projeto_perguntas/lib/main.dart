@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, library_private_types_in_public_api
 import 'package:flutter/material.dart';
-import './questao.dart';
-import './resposta.dart';
+import './questionario.dart';
+import './resultado.dart';
 
 main() => runApp(MyApp());
 
@@ -11,15 +11,30 @@ class _PerguntaAppState extends State<MyApp> {
   final List<Map<String, Object>> _perguntas = const [
     {
       'texto': 'Qual é um animal?',
-      'alternativas': ['Casa', 'Carro', 'Cachorro', 'Colher'],
+      'alternativas': [
+        {'texto': 'Casa', 'nota': 0},
+        {'texto': 'Carro', 'nota': 0},
+        {'texto': 'Cachorro', 'nota': 10},
+        {'texto': 'Colher', 'nota': 0},
+      ],
     },
     {
       'texto': 'Qual é uma cor?',
-      'alternativas': ['Azul', 'Faca', 'Relógio', 'Quadro'],
+      'alternativas': [
+        {'texto': 'Azul', 'nota': 10},
+        {'texto': 'Faca', 'nota': 0},
+        {'texto': 'Relógio', 'nota': 0},
+        {'texto': 'Quadro', 'nota': 0},
+      ],
     },
     {
       'texto': 'Qual é uma Fruta?',
-      'alternativas': ['Chave', 'Radio', 'Celular', 'Morango'],
+      'alternativas': [
+        {'texto': 'Chave', 'nota': 0},
+        {'texto': 'Radio', 'nota': 0},
+        {'texto': 'Celular', 'nota': 0},
+        {'texto': 'Morango', 'nota': 10},
+      ],
     },
   ];
 
@@ -37,10 +52,6 @@ class _PerguntaAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temperguntaSelecionada
-        ? _perguntas[_perguntaSelecionada].cast()['alternativas']
-        : [];
-
     return MaterialApp(
       key: UniqueKey(),
       home: Scaffold(
@@ -48,20 +59,12 @@ class _PerguntaAppState extends State<MyApp> {
           title: const Center(child: Text('Perguntas')),
         ),
         body: temperguntaSelecionada
-            ? Column(
-                children: <Widget>[
-                  Questao(_perguntas[_perguntaSelecionada]['texto'].toString()),
-                  ...respostas
-                      .map((text) => Resposta(text, _responder))
-                      .toList(),
-                ],
+            ? Questionario(
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder,
               )
-            : Center(
-                child: Text(
-                  ' (>ô_õ)> Parabaiinnsss!!!',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
+            : Resultado(),
       ),
     );
   }
