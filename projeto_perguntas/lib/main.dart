@@ -7,6 +7,7 @@ main() => runApp(MyApp());
 
 class _PerguntaAppState extends State<MyApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
 
   final List<Map<String, Object>> _perguntas = const [
     {
@@ -38,12 +39,14 @@ class _PerguntaAppState extends State<MyApp> {
     },
   ];
 
-  void _responder() {
+  void _responder(int nota) {
     if (temperguntaSelecionada) {
       setState(() {
         _perguntaSelecionada++;
+        _pontuacaoTotal += nota;
       });
     }
+    print(_pontuacaoTotal);
   }
 
   bool get temperguntaSelecionada {
@@ -64,7 +67,7 @@ class _PerguntaAppState extends State<MyApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder,
               )
-            : Resultado(),
+            : Resultado(_pontuacaoTotal),
       ),
     );
   }
