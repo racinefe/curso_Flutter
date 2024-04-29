@@ -12,7 +12,7 @@
  
 
            
- <img src="https://encurtador.com.br/kpzVY" alt="ilustração de um computador" min-width="400px" max-width="400px" width="400px" align="right">
+ <img src="https://cdn.discordapp.com/attachments/1089186196858622065/1179757632232378418/computer-illustration.png?ex=6630e0ea&is=662f8f6a&hm=d3f538d26309e7d54077326c14ae0d44b8521e00dad076282a19236a9421dcde&" alt="ilustração de um computador" min-width="400px" max-width="400px" width="400px" align="right">
  
   - Fundamentos de Flutter
 
