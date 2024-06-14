@@ -6,7 +6,7 @@
 </h1>  
 
 
-<h2 align="left">Modulos de estudo de Flutter 🪄</h2>  
+<h2 align="left">Módulos de estudo de Flutter 🪄</h2>  
 
 <p>
  
